@@ -482,7 +482,7 @@ object ArrayRecord
       * @return
       *   a new product instance
       */
-    def to[To](using conv: Converter[ArrayRecord[R], To]): To = conv(record)
+    inline def to[To](using conv: Converter[ArrayRecord[R], To]): To = conv(record)
   }
 
   given canEqualReflexive[R]: CanEqual[ArrayRecord[R], ArrayRecord[R]] =

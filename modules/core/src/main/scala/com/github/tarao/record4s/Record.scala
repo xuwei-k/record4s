@@ -293,7 +293,7 @@ object Record extends RecordPlatformSpecific {
       * @return
       *   a new product instance
       */
-    def to[To](using conv: Converter[R, To]): To = conv(record)
+    inline def to[To](using conv: Converter[R, To]): To = conv(record)
 
     /** Convert this record to a `Tuple`.
       *
