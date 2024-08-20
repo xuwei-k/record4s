@@ -101,13 +101,13 @@ object RecordLike {
     new OfProduct
 
   type LabelsOf[T <: Tuple] <: Tuple = T match {
-    case (l, _) *: tail => l *: LabelsOf[tail]
+    case (l, a) *: tail => l *: LabelsOf[tail]
     case head *: tail   => LabelsOf[tail]
     case _              => EmptyTuple
   }
 
   type TypesOf[T] <: Tuple = T match {
-    case (_, t) *: tail => t *: TypesOf[tail]
+    case (a, t) *: tail => t *: TypesOf[tail]
     case head *: tail   => TypesOf[tail]
     case _              => EmptyTuple
   }

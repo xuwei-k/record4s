@@ -214,8 +214,8 @@ private[record4s] class InternalMacros(using
 
   private def isTuple(tpr: TypeRepr): Boolean =
     tpr.asType match {
-      case '[_ *: _] => true
-      case _         => false
+      case '[x1 *: x2] => true
+      case _           => false
     }
 
   private def isOpaqueAlias(tpr: TypeRepr): Boolean =
@@ -427,7 +427,7 @@ private[record4s] class InternalMacros(using
 
   def schemaOf[R: Type]: Schema = {
     def isTuple[T: Type]: Boolean = Type.of[T] match {
-      case '[_ *: _]     => true
+      case '[x1 *: x2]   => true
       case '[EmptyTuple] => true
       case _             => false
     }
